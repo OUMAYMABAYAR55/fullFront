@@ -1,0 +1,49 @@
+<div class="account-container">
+  <h2>Mon compte</h2>
+
+  <div class="parent-info card">
+    <h3>Informations personnelles</h3>
+    <p><strong>Nom :</strong> {{ parent.nom }}</p>
+    <p><strong>Prénom :</strong> {{ parent.prenom }}</p>
+    <p><strong>Email :</strong> {{ parent.email }}</p>
+    <p><strong>Téléphone :</strong> {{ parent.telephone }}</p>
+    <p><strong>Adresse :</strong> {{ parent.adresse }}</p>
+  </div>
+
+  <div class="children-list card">
+    <h3>Mes enfants</h3>
+    <button class="btn add-btn" (click)="showAddChildForm = true">Ajouter un enfant</button>
+    <div *ngIf="showAddChildForm" class="add-form">
+      <input [(ngModel)]="newChild.prenom" placeholder="Prénom" />
+      <input [(ngModel)]="newChild.nom" placeholder="Nom" />
+      <button class="btn add-btn" (click)="addChild()">Sauvegarder</button>
+      <button class="btn delete-btn" (click)="showAddChildForm=false">Annuler</button>
+    </div>
+
+    <ul>
+      <li *ngFor="let child of children" class="child-item">
+        {{ child.prenom }} {{ child.nom }}
+        <a [routerLink]="['/child', child.id]">Voir profil</a>
+        <button class="btn delete-btn" (click)="deleteChild(child.id!)">Supprimer</button>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngFor="let child of children" class="child-calendar card">
+    <h3>{{ child.prenom }} {{ child.nom }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of getCalendarDays(child.id!)">
+          <td *ngFor="let day of week" [ngClass]="{'present': day.present, 'absent': !day.present && day.day!==0}">
+            {{ day.day !== 0 ? day.day : '' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

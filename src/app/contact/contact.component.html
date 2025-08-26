@@ -1,0 +1,47 @@
+<div class="overlay">
+  <div class="card p-4 shadow-lg contact-card text-white">
+    <h3 class="text-center mb-4">Contactez-nous</h3>
+
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <div class="mb-3">
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Email"
+          required
+          ngModel>
+      </div>
+
+      <div class="mb-3">
+        <input
+          type="text"
+          name="subject"
+          class="form-control"
+          placeholder="Sujet"
+          required
+          ngModel>
+      </div>
+
+      <div class="mb-3">
+        <textarea
+          name="message"
+          class="form-control"
+          placeholder="Message"
+          rows="4"
+          required
+          ngModel></textarea>
+      </div>
+
+      <div class="d-grid">
+        <button class="btn btn-light" type="submit">Envoyer le message</button>
+      </div>
+    </form>
+  </div>
+  <!-- ✅ Image robot en bas à droite -->
+<div class="robot-floating">
+  <img src="assets/images/aqwx.png" alt="Robot décoratif">
+</div>
+
+</div>
+

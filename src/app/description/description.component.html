@@ -1,0 +1,265 @@
+<div class="carousel-fullscreen">
+  <button class="arrow left" (click)="previousImage()">&#10094;</button>
+
+  <div
+    class="carousel-background"
+    [ngStyle]="{ 'background-image': 'url(' + images[currentIndex] + ')' }"
+  >
+    <!-- Texte centré dans l'image -->
+    <div class="center-text">
+      <h1>Apprendre en s'amusant</h1>
+    </div>
+
+    <!-- Bannière en bas, qui dépasse -->
+    <div class="inscription-banner">
+      <h2>Inscription Ouverte</h2>
+      <p>2025-2026</p>
+      <button class="cta-button">CLIQUEZ-ICI</button>
+    </div>
+  </div>
+
+  <button class="arrow right" (click)="nextImage()">&#10095;</button>
+</div>
+ <section class="video-section-title">
+  <h2>Découvrez les Atouts de Notre École</h2>
+  <h3>À la Pointe de l’Excellence</h3>
+  <p>Excellence, Innovation, Réussite</p>
+</section>
+<div class="video-section-wrapper">
+ 
+
+  <div class="video-section-container">
+    <video class="video-section-bg-video" autoplay muted loop playsinline>
+      <source src="assets/images/presentation.mp4" type="video/mp4" />
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+
+    <div class="video-section-info-overlay">
+      <div class="video-section-info-item">
+        <div class="video-section-icon">⭐</div>
+        <div>
+          <h3>Accréditation EUR-ACE</h3>
+          <p>Vous garantit une qualité d'enseignement reconnue à l'international, favorise la mobilité internationale et l’employabilité.</p>
+        </div>
+      </div>
+
+      <div class="video-section-info-item">
+        <div class="video-section-icon">📜</div>
+        <div>
+          <h3>Centre de certifications PolyFC</h3>
+          <p>Est un centre privé de certifications leader dans le domaine de la formation.</p>
+        </div>
+      </div>
+
+      <div class="video-section-info-item">
+        <div class="video-section-icon">💡</div>
+        <div>
+          <h3>GFI Incubateur</h3>
+          <p>Espace propice à la création et à la croissance des start-ups.</p>
+        </div>
+      </div>
+
+      <div class="video-section-info-item">
+        <div class="video-section-icon">🎖️</div>
+        <div>
+          <h3>Laboratoires bien équipés</h3>
+          <p>46 laboratoires modernes pour un apprentissage de qualité.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<section class="actualites-section">
+  <div class="actualites-header">
+    <h2>Nos actualités</h2>
+    <h3>Rendez-vous avec toutes nos actualités et news</h3>
+    <p>Restez-informés !</p>
+  </div>
+
+  <div class="actualites-cards">
+    <!-- Card 1 -->
+    <div class="actualite-card">
+      <img src="assets/images/math.jpg" alt="Bootcamp CODE TO RISE" />
+      <h4>Bootcamp CODE TO RISE</h4>
+      <p>
+"Ce stage au sein du club de calcul mathématique m’a permis de renforcer mes compétences en résolution de problèmes, d’approfondir mes connaissances en algèbre et analyse, et d’apprendre à collaborer dans un cadre de travail collectif et stimulant."      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="actualite-card">
+      <img src="assets/images/python.jpg" alt="Remise des diplômes" />
+      <h4>Remise des diplômes – 15e édition</h4>
+      <p>
+        🎓 formation python avec esp32 – Promo 2025 C’est avec fierté et
+        émotion que elite robotique…
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="actualite-card">
+      <img src="assets/images/stage.jpg" alt="TCPC 2K25" />
+      <h4>TCPC 2K25</h4>
+      <p>
+       "Ce stage en cinquième année a pour objectif de mettre en pratique les connaissances théoriques acquises tout au long de mon parcours académique, de renforcer mes compétences professionnelles, et de découvrir concrètement le fonctionnement d’un environnement de travail réel."
+      </p>
+    </div>
+  </div>
+
+  <div class="actualites-btn">
+    <button>Plus d'actualité</button>
+  </div>
+</section>
+
+
+
+
+
+<!-- Ton contenu existant -->
+
+<section #statsSection class="temoignages-section" [@textAnimation]>
+  <h2>Témoignages</h2>
+
+  <div class="temoignage-content">
+    <p><em>{{ temoignages[currentTemoignageIndex].texte }}</em></p>
+  </div>
+
+  <div class="temoignage-navigation">
+    <button aria-label="Témoignage précédent" (click)="previousTemoignage()">&#10094;</button>
+    <button aria-label="Témoignage suivant" (click)="nextTemoignage()">&#10095;</button>
+  </div>
+
+  <div class="temoignage-footer">
+    <img
+      [src]="temoignages[currentTemoignageIndex].photo"
+      [alt]="temoignages[currentTemoignageIndex].nom"
+      class="photo"
+    />
+    <div class="infos">
+      <strong>{{ temoignages[currentTemoignageIndex].nom }}</strong>
+      <p>{{ temoignages[currentTemoignageIndex].poste }}</p>
+    </div>
+  </div>
+
+  <div class="dots">
+    <span
+      *ngFor="let t of temoignages; let i = index"
+      (click)="goToTemoignage(i)"
+      [class.active]="i === currentTemoignageIndex"
+      class="dot"
+      [attr.aria-label]="'Aller au témoignage ' + (i + 1)"
+      role="button"
+      tabindex="0"
+    ></span>
+  </div>
+</section>
+
+
+
+<section class="stats-section" #statsSection>
+  <div class="stats-container">
+    <h2>DIRECTION ET ANIMATEURS</h2>
+    <p class="stats-description">
+      Responsable des clubs enfants pour animer le club relative au journée officiel de thème défaut.
+    </p>
+
+    <div class="stats-grid">
+      <!-- ENFANTS -->
+      <div class="stat-item">
+        <div class="stat-circle">
+          <span [countUp]="shouldAnimate ? 15 : 0" [options]="countUpOptions">0</span>
+        </div>
+        <h3>ENFANTS</h3>
+        <p>Une dizaine de participants ont répondu à l'appel...</p>
+      </div>
+
+      <!-- GROUPES -->
+      <div class="stat-item">
+        <div class="stat-circle">
+          <span [countUp]="shouldAnimate ? 3 : 0" [options]="countUpOptions">0</span>
+        </div>
+        <h3>GROUPES</h3>
+        <p>Les enfants sont en activités en groupe de 4 à 6...</p>
+      </div>
+
+      <!-- ATELIERS -->
+      <div class="stat-item">
+        <div class="stat-circle">
+          <span [countUp]="shouldAnimate ? 36 : 0" [options]="countUpOptions">0</span>
+        </div>
+        <h3>ATELIERS</h3>
+        <p>Toute l'année scolaire : Programmation, électronique...</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="activities-section">
+  <div class="activities-container">
+    <h2>NOS ACTIVITÉS</h2>
+    <p class="activities-subtitle">RETROUVEZ LE BON CHOIX POUR VOS ENFANTS</p>
+    
+    <div class="divider"></div>
+
+    <div class="activities-grid">
+      <!-- Arduino -->
+      <div class="activity-card">
+        <div class="circle-icon">
+          <img src="assets/images/arduino-icon.png" alt="Arduino" class="circle-image">
+        </div>
+        <h3>ARDUINO</h3>
+        <p>Programmation de cartes électroniques Arduino.</p>
+      </div>
+
+      <!-- IOT -->
+      <div class="activity-card">
+        <div class="circle-icon">
+          <img src="assets/images/architecture-icon.png" alt="IOT" class="circle-image">
+        </div>
+        <h3>IOT</h3>
+        <p>Initiation à l'architecture pour enfants.</p>
+      </div>
+
+      <!-- Electronique -->
+      <div class="activity-card">
+        <div class="circle-icon">
+          <img src="assets/images/electronique-icon.png" alt="Électronique" class="circle-image">
+        </div>
+        <h3>ELECTRONIQUE</h3>
+        <p>Montages électroniques pratiques pour enfants.</p>
+      </div>
+
+      <!-- Programmation -->
+      <div class="activity-card">
+        <div class="circle-icon">
+          <img src="assets/images/programmation-icon.png" alt="Programmation" class="circle-image">
+        </div>
+        <h3>PROGRAMMATION</h3>
+        <p>Apprentissage des bases du codage.</p>
+      </div>
+
+      <!-- Robotique -->
+      <div class="activity-card">
+        <div class="circle-icon">
+          <img src="assets/images/sw.jpg" alt="Robotique" class="circle-image">
+        </div>
+        <h3>solidworks</h3>
+        <p>
+
+Solidworks est un logiciel de conception assistée par ordinateur, appartenant à la société Dassault Systèmes. Il utilise le principe de conception paramétrique et génère trois types de fichiers qui sont liés: la pièce, l'assemblage, et la mise en plan.</p>
+      </div>
+
+      <!-- Lugo -->
+      <div class="activity-card">
+        <div class="circle-icon">
+          <img src="assets/images/domotique-icon.png" alt="Lugo" class="circle-image">
+        </div>
+        <h3>LUGO</h3>
+        <p>Découverte de la maison connectée.</p>
+      </div>
+    </div>
+  </div>
+</section>

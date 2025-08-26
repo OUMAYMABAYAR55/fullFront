@@ -1,0 +1,52 @@
+<div class="register-container">
+  <div class="register-card">
+    <h2 class="title">Créer un compte</h2>
+    <form (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+
+      <div class="form-group">
+        <label for="nom">Nom *</label>
+        <input type="text" id="nom" name="nom" class="form-control" [(ngModel)]="form.nom" required />
+      </div>
+
+      <div class="form-group">
+        <label for="prenom">Prénom *</label>
+        <input type="text" id="prenom" name="prenom" class="form-control" [(ngModel)]="form.prenom" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="form.email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe *</label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="form.password" required minlength="6" />
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Téléphone</label>
+        <input type="text" id="telephone" name="telephone" class="form-control" [(ngModel)]="form.telephone" />
+      </div>
+
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" id="adresse" name="adresse" class="form-control" [(ngModel)]="form.adresse" />
+      </div>
+
+      <div *ngIf="isSignUpFailed" class="alert alert-danger mt-2">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="isSuccessful" class="alert alert-success mt-2">
+        Compte créé avec succès !
+      </div>
+
+      <button class="btn btn-primary w-100 mt-3" type="submit">Créer un compte</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <span>Déjà un compte ?</span>
+      <button class="btn btn-link p-0" (click)="goToLogin()">Se connecter</button>
+    </div>
+  </div>
+</div>

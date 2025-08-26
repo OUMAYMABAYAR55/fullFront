@@ -1,0 +1,293 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.account-container {
+  max-width: 900px;
+  margin: auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 50, 0.2);
+}
+
+h2 {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #e8eaf6;
+  border: 1px solid #c5cae9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+h3 {
+  color: #303f9f;
+  margin-bottom: 15px;
+}
+
+h3.paid {
+  color: #1a237e; /* Bleu pour mois payé */
+}
+
+h3.unpaid {
+  color: #f44336; /* Rouge pour mois non payé */
+}
+
+.children-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.child-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3f4fd;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #c5cae9;
+}
+
+.actions button {
+  margin-left: 10px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.add-btn {
+  background-color: #1a237e;
+}
+
+.edit-btn {
+  background-color: #3949ab;
+}
+
+.delete-btn {
+  background-color: #d32f2f;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.add-form, .update-form {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f3f4fd;
+  border-radius: 8px;
+  border: 1px solid #c5cae9;
+}
+
+.add-form input, .update-form input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #c5cae9;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #1a237e;
+}
+
+.add-form input::placeholder, .update-form input::placeholder {
+  color: #757575;
+}
+
+.history-section, .payment-section, .event-section {
+  padding: 15px;
+}
+
+.light-blue-btn {
+  background-color: #bbdefb;
+  color: #1a237e;
+}
+
+.light-blue-btn:hover {
+  background-color: #90caf9;
+}
+
+.payment-calendar {
+  margin-bottom: 15px;
+}
+
+.payment-calendar select {
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #c5cae9;
+  margin-right: 10px;
+}
+
+.payment-calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-calendar th, .payment-calendar td {
+  border: 1px solid #c5cae9;
+  padding: 8px;
+  text-align: center;
+  width: 14.28%; /* 100% / 7 jours */
+  background-color: #ffffff;
+  font-size: 16px;
+  color: #000000;
+}
+
+.payment-calendar th {
+  background-color: #e8eaf6;
+  color: #303f9f;
+}
+
+.paid {
+  background-color: #bbdefb;
+  color: #1a237e;
+}
+
+.paid .payment-calendar td {
+  background-color: #bbdefb;
+}
+
+.unpaid {
+  color: #f44336;
+}
+
+.unpaid .payment-calendar td {
+  background-color: #f44336;
+  color: #ffffff;
+}
+
+.present {
+  background-color: #4caf50;
+  color: white;
+}
+
+.absent {
+  background-color: #f44336;
+  color: white;
+}
+
+.single-session {
+  border: 2px dashed #ffffff;
+}
+
+.eminent {
+  font-weight: bold;
+  border: 2px solid #1a237e;
+}
+
+.paid-month {
+  color: #1a237e;
+}
+
+.paid-month .payment-calendar th {
+  color: #bbdefb; /* Bleu clair pour les jours si mois payé */
+}
+
+.unpaid-month {
+  color: #f44336;
+}
+
+.unpaid-month .payment-calendar th {
+  color: #f44336; /* Rouge pour les jours si mois non payé */
+}
+
+/* Coloriage des jours selon le niveau (ex. lundi=1, mardi=2, dimanche=7) */
+.payment-calendar td:nth-child(1).present { background-color: #4caf50; color: white; } /* Lundi */
+.payment-calendar td:nth-child(2).present { background-color: #4caf50; color: white; } /* Mardi */
+.payment-calendar td:nth-child(7).present { background-color: #4caf50; color: white; } /* Dimanche */
+
+.payment-calendar td:nth-child(1).absent { background-color: #f44336; color: white; } /* Lundi */
+.payment-calendar td:nth-child(2).absent { background-color: #f44336; color: white; } /* Mardi */
+.payment-calendar td:nth-child(7).absent { background-color: #f44336; color: white; } /* Dimanche */
+
+/* Style pour le mot "Payé" avec animation et encadrement */
+.paid-month::after {
+  content: "Payé";
+  font-weight: bold;
+  color: #1a237e;
+  margin-left: 10px;
+  border: 2px solid #1a237e;
+  padding: 2px 6px;
+  border-radius: 4px;
+  animation: colorChange 2s infinite;
+}
+
+@keyframes colorChange {
+  0% { background-color: #bbdefb; }
+  50% { background-color: #90caf9; }
+  100% { background-color: #bbdefb; }
+}
+
+.present {
+  background: #4caf50;
+  color: white;
+}
+
+.absent {
+  background: #f44336;
+  color: white;
+}
+
+.single-session {
+  border: 2px dashed #fff;
+}
+
+.paid-month {
+  color: #1a237e;
+}
+
+.unpaid-month {
+  color: #f44336;
+}
+.btn-retour {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-retour:hover {
+  background-color: #fff;
+  color: #1a237e;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 50, 0.3);
+}
+
+.btn-retour span {
+  transition: transform 0.3s ease;
+}
+
+.btn-retour:hover span {
+  transform: translateX(-4px);
+}

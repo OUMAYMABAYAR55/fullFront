@@ -1,0 +1,51 @@
+<div class="parent-dashboard">
+  <h2 class="dashboard-title">Tableau de bord du parent</h2>
+  
+  <div class="parent-info card">
+    <h3 class="section-title">Mes informations</h3>
+    <p><strong>Nom :</strong> {{ lastName }}</p>
+    <p><strong>Prénom :</strong> {{ firstName }}</p>
+    <p><strong>Email :</strong> {{ email }}</p>
+    <p><strong>Téléphone :</strong> {{ phoneNumber }}</p>
+    <button class="btn btn-primary" (click)="updateProfile()">Mettre à jour le profil</button>
+  </div>
+
+  <div class="children-list card">
+    <h3 class="section-title">Mes enfants</h3>
+    <button class="btn btn-success" (click)="showAddChildForm = true">Ajouter un enfant</button>
+    <ul>
+      <li *ngFor="let child of enfants" class="child-item">
+        {{ child.prenom }} {{ child.nom }} - 
+        <a [routerLink]="['/child', child.id]">Voir détails</a>
+        <button class="btn btn-warning" (click)="editChild(child)">Modifier</button>
+        <button class="btn btn-danger" (click)="deleteChild(child.id)">Supprimer</button>
+      </li>
+    </ul>
+    <div *ngIf="showAddChildForm" class="add-form">
+      <input [(ngModel)]="newChild.prenom" placeholder="Prénom" />
+      <input [(ngModel)]="newChild.nom" placeholder="Nom" />
+      <button class="btn btn-primary" (click)="saveChild()">Sauvegarder</button>
+      <button class="btn btn-secondary" (click)="cancelAddChild()">Annuler</button>
+    </div>
+  </div>
+
+  <div class="history-section card">
+    <h3 class="section-title">Consulter historique & certificats</h3>
+    <button class="btn btn-secondary" [routerLink]="['/history']">Voir l'historique</button>
+  </div>
+
+  <div class="payment-section card">
+    <h3 class="section-title">Suivre les paiements par mois</h3>
+    <ul>
+      <li *ngFor="let payment of monthlyPayments">
+        Mois: {{ payment.month }} - Montant: {{ payment.amount }} €
+      </li>
+    </ul>
+    <button class="btn btn-secondary" [routerLink]="['/fees']">Voir détails</button>
+  </div>
+
+  <div class="event-section card">
+    <h3 class="section-title">Réserver un événement</h3>
+    <button class="btn btn-secondary" [routerLink]="['/events']">Réserver</button>
+  </div>
+</div>

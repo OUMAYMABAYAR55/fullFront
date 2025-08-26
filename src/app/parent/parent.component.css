@@ -1,0 +1,114 @@
+.parent-dashboard {
+  padding: 20px;
+  background-color: #1e3a8a; /* Bleu foncé */
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-title {
+  color: #60a5fa; /* Bleu clair pour le titre */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #2b4ead; /* Bleu foncé plus clair pour les cartes */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  color: #93c5fd; /* Bleu très clair pour les sous-titres */
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.children-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.child-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #3752b7;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn-primary {
+  background-color: #3b82f6; /* Bleu principal */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+}
+
+.btn-success {
+  background-color: #10b981; /* Vert pour ajouter */
+}
+
+.btn-success:hover {
+  background-color: #059669;
+}
+
+.btn-warning {
+  background-color: #f59e0b; /* Orange pour modifier */
+}
+
+.btn-warning:hover {
+  background-color: #d97706;
+}
+
+.btn-danger {
+  background-color: #ef4444; /* Rouge pour supprimer */
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-secondary {
+  background-color: #6b7280; /* Gris pour les actions secondaires */
+}
+
+.btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+.add-form {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #3752b7;
+  border-radius: 4px;
+}
+
+.add-form input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  background-color: #2b4ead;
+  color: #ffffff;
+}
+
+.add-form input::placeholder {
+  color: #93c5fd;
+}

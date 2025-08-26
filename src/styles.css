@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 60px; /* Doit correspondre à la hauteur de la navbar */
+}
+
+app-image-carousel {
+  display: block;
+  margin-top: 0; /* Supprime tout espace */
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-on-load {
+  animation: fadeIn 1s ease-in-out;
+}

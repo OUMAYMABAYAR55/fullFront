@@ -1,0 +1,626 @@
+/* SECTION avec image de fond */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background-image: url('/assets/images/aq.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.35);
+  z-index: 0;
+}
+
+/* Robot animé */
+.robot-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateX(-25%);
+}
+
+.robot-giant {
+  max-height: 95vh;
+  width: auto;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+/* Titre central */
+.centered-title {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #004d40;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0 20px;
+}
+
+.centered-title h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.centered-title h2 {
+  font-size: 2rem;
+  color: #8B0000;
+  margin-bottom: 1rem;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+.centered-title p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  animation: fadeInDown 1.4s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TITRE Objectifs pédagogiques */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #004d40;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Liste avec numéros circulaires */
+.numbered-objectives {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #003c3c;
+}
+
+.numbered-objectives li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fallIn 0.8s forwards ease-out;
+}
+
+.numbered-objectives li:hover {
+  transform: translateX(15px);
+  box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Numéros dans cercle */
+.num-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #004d40;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+
+/* ANIMATION de chute */
+@keyframes fallIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* DELAYS en cascade */
+.delay-1 {
+  animation-delay: 0.2s;
+}
+.delay-2 {
+  animation-delay: 0.4s;
+}
+.delay-3 {
+  animation-delay: 0.6s;
+}
+.delay-4 {
+  animation-delay: 0.8s;
+}
+
+/* OBJECTIFS ENCADRÉS EN BAS */
+.objectives-section {
+  position: relative;
+  margin: 60px auto;
+  width: 90%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 25px 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-out;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.objectives-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #700000;
+  font-weight: 800;
+  text-align: center;
+}
+
+.objectives-section ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.1rem;
+  color: #002b2b;
+}
+
+.objectives-section li {
+  margin-bottom: 8px;
+}
+
+/* Animation d’entrée en bas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Conteneur grille objectifs */
+.objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* Cartes individuelles */
+.objective-card {
+  background: rgba(255 255 255 / 0.9);
+  border-radius: 16px;
+  padding: 25px 20px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  text-align: center;
+  color: #002b2b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fallIn 0.7s forwards ease-out;
+}
+
+/* Cascade animation delays */
+.objective-card:nth-child(1) { animation-delay: 0.1s; }
+.objective-card:nth-child(2) { animation-delay: 0.35s; }
+.objective-card:nth-child(3) { animation-delay: 0.55s; }
+.objective-card:nth-child(4) { animation-delay: 0.75s; }
+
+.objective-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+}
+
+/* Numéro + icône */
+.number-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+/* Numéro dans cercle */
+.num {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #3b4644;
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Icones SVG ou images */
+.icon {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 1px #06b6d4);
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.75; }
+}
+
+/* Animation d'entrée */
+@keyframes fallIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Conteneur objectifs principal, largeur pleine */
+.objectives-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes fixes */
+  gap: 30px;
+  padding: 0 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0e7ff;
+  background-color: #fbfcff; /* optionnel : fond général sombre */
+}
+
+/* Carte objectifs style sombre */
+.objective-card {
+  background: #547ec0;
+  border-radius: 20px;
+  padding: 25px 30px 40px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.objective-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+}
+
+/* Badge numérotation */
+.number-badge {
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.3);
+}
+
+/* Dégradés par numéro modifiés pour 1 et 2 */
+.number-1 {
+  background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%); /* bleu clair éclatant */
+}
+.number-2 {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%); /* bleu violet clair */
+}
+.number-3 {
+  background: linear-gradient(135deg, #f43f5e 0%, #f87171 100%);
+}
+.number-4 {
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+}
+
+.objective-card h3 {
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.objective-card .icon svg {
+  transform-origin: center center;
+  transform: scale(2);
+  width: 40px;  /* garde la taille du conteneur */
+  height: 40px;
+  display: block; /* évite des problèmes de margin */
+  margin: 0 auto;
+}
+
+
+.objective-card p {
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: #cbd5e1;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  .objectives-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reset margin/padding globale */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.title-section {
+  text-align: center;
+  margin: 60px auto 40px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.gradient-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #3b82f6, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+
+/* Ligne animée sous le titre */
+.animated-underline {
+  height: 4px;
+  width: 160px;
+  margin: 0 auto;
+  background: linear-gradient(to right, #3b82f6, #10b981);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-underline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.dot-stack span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #f43f5e;
+  animation: bounce 0.6s infinite ease-in-out; /* vitesse augmentée ici */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+.photo-gallery-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: space-between;
+}
+
+.photo-card {
+  width: calc(20% - 1.6rem);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-8px);
+}
+
+.image-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.photo-card:hover .image-wrapper img {
+  transform: scale(1.05);
+}
+
+.text-wrapper h3 {
+  color: #1d4ed8;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.text-wrapper p {
+  color: #444;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* Animation */
+
+.photo-card.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.photo-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .photo-card {
+    width: calc(33.333% - 1.33rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .photo-card {
+    width: 100%;
+  }
+}
+.photo-gallery-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  background-color: #f9fafb;
+}
+
+/* Structure de la carte */
+.photo-card {
+  width: 240px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.4s ease;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.photo-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image arrondie type cercle */
+.rounded-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 20px;
+  border: 4px solid #e5e7eb;
+  transition: transform 0.4s ease;
+}
+
+/* Animation à l'affichage */
+.animated-card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 0.8s ease-out forwards;
+}
+
+.animated-card:nth-child(1) { animation-delay: 0s; }
+.animated-card:nth-child(2) { animation-delay: 0.2s; }
+.animated-card:nth-child(3) { animation-delay: 0.4s; }
+.animated-card:nth-child(4) { animation-delay: 0.6s; }
+.animated-card:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Texte avec effet "glisse vers le haut" */
+.description {
+  padding: 10px 20px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: textSlideUp 0.6s ease-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes textSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.description h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+  color: #1d4ed8;
+}
+
+.description p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}

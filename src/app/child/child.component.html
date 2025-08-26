@@ -1,0 +1,66 @@
+<nav class="navbar" style="background-color: #1a237e; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0, 0, 50, 0.2); margin-bottom: 30px;">
+  <a class="btn-retour" [routerLink]="['/account']" routerLinkActive="active">
+    <span>&#x2190;</span> Retourner
+  </a>
+  <div style="display: flex; gap: 20px;">
+    <a style="color: #bbdefb; text-decoration: none; font-size: 16px; padding: 8px 15px; border-radius: 4px;" [routerLink]="['/']">Accueil</a>
+    <a style="color: #bbdefb; text-decoration: none; font-size: 16px; padding: 8px 15px; border-radius: 4px;" [routerLink]="['/account']">Mon Compte</a>
+    <button style="background-color: #d32f2f; color: #ffffff; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px;" (click)="logout()">Déconnexion</button>
+  </div>
+</nav>
+
+<div class="child-dashboard">
+  <h2 class="dashboard-title">Profil de l'enfant: {{ child.firstName }} {{ child.lastName }}</h2>
+  
+  <div class="child-info card">
+    <h3 class="section-title">Informations</h3>
+    <div class="info-container">
+      <div class="info-text">
+        <p><strong>Âge :</strong> {{ child.age }} ans</p>
+        <p><strong>Niveau :</strong> {{ child.educationLevel }}</p>
+        <button class="btn btn-reserve" (click)="reserveEvent()">Réserver une place</button>
+      </div>
+      <div class="photo-frame" *ngIf="child.photoUrl">
+        <img [src]="child.photoUrl" alt="Photo de {{ child.firstName }}" class="child-photo">
+      </div>
+    </div>
+  </div>
+
+  <div class="certificates card">
+    <h3 class="section-title">Certificats</h3>
+    <button class="btn btn-success" (click)="addCertificate()">Ajouter un certificat</button>
+    <ul>
+      <li *ngFor="let cert of child.certificates" class="cert-item">
+        {{ cert.title }} - {{ cert.date }}
+        <button class="btn btn-warning" (click)="editCertificate(cert)">Modifier</button>
+        <button class="btn btn-danger" (click)="deleteCertificate(cert)">Supprimer</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="history card">
+    <h3 class="section-title">Historique des activités</h3>
+    <ul>
+      <li *ngFor="let hist of child.history" class="hist-item">
+        {{ hist.date }} - {{ hist.description }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="attendance-calendar card">
+    <h3 class="section-title">Calendrier (Présence/Absence)</h3>
+    <ul>
+      <li *ngFor="let entry of child.attendance" class="attend-item">
+        {{ entry.date }} - {{ entry.status }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="showAddCertForm" class="add-form card">
+    <h3>Ajouter un certificat</h3>
+    <input [(ngModel)]="newCertificate.title" placeholder="Titre" />
+    <input [(ngModel)]="newCertificate.date" placeholder="Date (AAAA-MM-JJ)" />
+    <button class="btn btn-primary" (click)="saveCertificate()">Sauvegarder</button>
+    <button class="btn btn-secondary" (click)="cancelAddCert()">Annuler</button>
+  </div>
+</div>

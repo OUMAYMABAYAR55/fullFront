@@ -1,0 +1,53 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2 class="title">Connexion</h2>
+    <form (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          [(ngModel)]="form.email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          [(ngModel)]="form.password"
+          required
+        />
+      </div>
+
+      <!-- Lien Mot de passe oublié placé ici, à l'intérieur de .login-card -->
+       <div>
+ <button class="btn btn-link p-0 small" (click)="goToForgotPassword()">Mot de passe oublié ?</button>
+       </div>
+     
+
+
+      <div *ngIf="isLoginFailed" class="alert alert-danger mt-2">
+        {{ errorMessage }}
+      </div>
+
+      <button class="btn btn-primary w-100 mt-3" type="submit">Se connecter</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <span>Pas encore de compte ?</span>
+      <button class="btn btn-link p-0" (click)="goToRegister()">Créer un compte</button>
+    </div>
+
+
+    <div *ngIf="isLoginFailed" class="alert alert-danger text-center mt-3">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

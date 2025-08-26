@@ -1,0 +1,209 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.child-dashboard {
+  max-width: 900px;
+  margin: auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 50, 0.2);
+}
+
+.dashboard-title {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #e8eaf6;
+  border: 1px solid #c5cae9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.section-title {
+  color: #303f9f;
+  margin-bottom: 15px;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.info-text {
+  flex: 1;
+}
+
+.photo-frame {
+  border: 3px solid #1a237e;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f3f4fd;
+}
+
+.child-photo {
+  max-width: 200px;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+.cert-item, .hist-item, .attend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3f4fd;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #c5cae9;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3f4fd;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #c5cae9;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #1a237e;
+}
+
+.btn-primary:hover {
+  opacity: minimale 0,85;
+}
+
+.btn-success {
+  background-color: #1a237e;
+}
+
+.btn-success:hover {
+  opacity: 0.85;
+}
+
+.btn-warning {
+  background-color: #3949ab;
+}
+
+.btn-warning:hover {
+  opacity: 0.85;
+}
+
+.btn-danger {
+  background-color: #d32f2f;
+}
+
+.btn-danger:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  background-color: #757575;
+}
+
+.btn-secondary:hover {
+  opacity: 0.85;
+}
+
+.btn-reserve {
+  background-color: #4caf50;
+  margin-top: 15px;
+}
+
+.btn-reserve І:hover {
+  opacity: 0.85;
+}
+
+.add-form {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f3f4fd;
+  border-radius: 8px;
+  border: 1px solid #c5cae9;
+}
+
+.add-form input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #c5cae9;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #1a237e;
+}
+
+.add-form input::placeholder {
+  color: #757575;
+}
+
+.paid-month::after {
+  content: "Payé";
+  font-weight: bold;
+  color: #1a237e;
+  margin-left: 10px;
+  border: 2px solid #1a237e;
+  padding: 2px 6px;
+  border-radius: 4px;
+  animation: colorChange 2s infinite;
+}
+
+@keyframes colorChange {
+  0% { background-color: #bbdefb; }
+  50% { background-color: #90caf9; }
+  100% { background-color: #bbdefb; }
+}
+
+.btn-retour {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-retour:hover {
+  background-color: #fff;
+  color: #1a237e;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 50, 0.3);
+}
+
+.btn-retour span {
+  transition: transform 0.3s ease;
+}
+
+.btn-retour:hover span {
+  transform: translateX(-4px);
+}

@@ -1,0 +1,131 @@
+.footer-container {
+  background-color: #0a4c84;
+  color: white;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1 1 250px;
+}
+
+.logo {
+  max-width: 150px;
+  margin-bottom: 15px;
+}
+
+.footer-left p,
+.footer-center ul,
+.footer-right ul {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.footer-left strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.footer-center h4 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.footer-center ul,
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center ul li,
+.footer-right ul li {
+  margin-bottom: 8px;
+}
+
+.footer-center ul li a,
+.footer-right ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-center ul li a:hover,
+.footer-right ul li a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background-color: #092c4e;
+  border-radius: 50%;
+  margin-right: 10px;
+  overflow: hidden; /* cache ce qui dépasse du cercle */
+}
+
+.social-icons a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* remplit le conteneur sans déformation */
+  display: block;
+  /* supprime espace blanc sous l'image */
+}
+
+.social-icons a:hover {
+  background-color: #083063;
+}
+
+.footer-right iframe {
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  height: 250px;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+}
+
+.footer-bottom a {
+  color: #f9d950;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
