@@ -1,0 +1,39 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Liste des paiements</strong>
+      </c-card-header>
+      <c-card-body>
+        <div class="mb-3">
+          <input [(ngModel)]="filtre"
+                 class="form-control"
+                 placeholder="Rechercher par nom, montant ou date...">
+        </div>
+
+        <table cTable hover>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+              <th>Montant (€)</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let paiement of paiementsFiltres">
+              <td>{{ paiement.id }}</td>
+              <td>{{ paiement.nom }}</td>
+              <td>{{ paiement.montant }}</td>
+              <td>{{ paiement.date }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="paiementsFiltres.length === 0" class="text-center text-muted">
+          Aucun paiement trouvé.
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

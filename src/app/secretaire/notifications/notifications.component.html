@@ -1,0 +1,14 @@
+<!-- src/app/views/messages/notifications/notifications.component.html -->
+<div class="container-fluid px-4 py-3">
+  <h1 class="h3 text-info fw-semibold mb-4">🔔 Notifications</h1>
+
+  @for (notif of notifications(); track notif.id) {
+    <div class="alert alert-soft-{{ notif.type === 'urgent' ? 'danger' : 'info' }} d-flex">
+      <svg cIcon [name]="getIcon(notif)" class="me-3" size="lg"></svg>
+      <div>
+        <h6 class="mb-1">{{ notif.title }}</h6>
+        <small class="text-muted">{{ notif.time | date:'short' }}</small>
+      </div>
+    </div>
+  }
+</div>

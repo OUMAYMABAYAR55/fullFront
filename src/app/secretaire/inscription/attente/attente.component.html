@@ -1,0 +1,49 @@
+<!-- src/app/views/inscription/attente/attente.component.html -->
+<div class="container-fluid px-4 py-3">
+  <h1 class="h3 text-warning fw-semibold mb-4">⏳ Inscriptions en Attente</h1>
+
+  <div class="alert alert-warning d-flex align-items-center" role="alert">
+    <svg cIcon name="cilAlarm" class="me-2" size="lg"></svg>
+    <div>
+      <strong>{{ pendingCount }} inscriptions</strong> en attente de validation.
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Groupe souhaité</th>
+            <th>Date</th>
+            <th>Documents</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (app of pendingApps(); track app.id) {
+            <tr>
+              <td>{{ app.name }}</td>
+              <td>{{ app.age }} ans</td>
+              <td>{{ app.group }}</td>
+              <td>{{ app.date | date:'dd/MM' }}</td>
+              <td>
+                @if (app.missingDocs.length > 0) {
+                  <span class="badge bg-danger">{{ app.missingDocs.length }} manquants</span>
+                } @else {
+                  <span class="badge bg-success">Complets</span>
+                }
+              </td>
+              <td>
+                <button class="btn btn-sm btn-success">Valider</button>
+                <button class="btn btn-sm btn-warning ms-1">Relancer</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,627 @@
+// === UNIFIED DESIGN SYSTEM FOR ELITE ROBOTIQUE ===
+// Robot-themed, futuristic design with holographic accents
+*{
+      font-family: 'Times New Roman', Times, serif !important;
+
+}
+// === ROBOT THEME COLORS ===
+:root {
+  --robot-primary: #00d4ff;
+  --robot-secondary: #ff6b9d;
+  --robot-accent: #6d4981;
+  --robot-energy: #00ff88;
+  --robot-dark: #0a0e1a;
+  --robot-light: #f0f4ff;
+  --robot-glass: rgba(0, 212, 255, 0.1);
+  --robot-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+  --robot-gradient: linear-gradient(135deg, #00d4ff 0%, #ff6b9d 50%, #744391 100%);
+  --robot-metal: linear-gradient(145deg, #e8f0ff 0%, #d1e7ff 100%);
+}
+
+// === GOOGLE FONT: ORBITRON ===
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
+
+// === BASE STYLES FOR HEADER ===
+.header.header-sticky {
+  background: linear-gradient(135deg, var(--robot-light) 0%, rgba(240, 244, 255, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 25px rgba(0, 212, 255, 0.15), 0 0 50px rgba(0, 212, 255, 0.05);
+  border-bottom: 2px solid transparent;
+  border-image: var(--robot-gradient) 1;
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Robot Brand (logo + text)
+  .header-brand {
+    display: flex;
+    align-items: center;
+    color: var(--robot-dark);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    &:hover {
+      color: var(--robot-primary);
+      transform: scale(1.05);
+      filter: drop-shadow(0 5px 15px rgba(0, 212, 255, 0.3));
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: var(--robot-gradient);
+      border-radius: 12px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+      opacity: 0.1;
+    }
+  }
+
+  .header-brand svg,
+  .header-brand img {
+    height: 45px;
+    margin-right: 0.75rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.2));
+
+    &:hover {
+      transform: rotate(10deg) scale(1.15);
+      filter: drop-shadow(0 5px 20px rgba(0, 212, 255, 0.4));
+    }
+  }
+
+  .header-brand span {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: var(--robot-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+    letter-spacing: -0.5px;
+    font-family:'Times New Roman', Times, serif;
+  }
+
+  // Futuristic Nav links
+  .header-nav .nav-link {
+    color: #4a5568;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    margin: 0 0.25rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 0.3px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--robot-gradient);
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .nav-icon {
+      margin-right: 0.5rem;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+    }
+
+    &:hover {
+      color: white;
+      background: transparent;
+      transform: translateY(-2px);
+      box-shadow: var(--robot-glow);
+
+      &::before {
+        left: 0;
+      }
+
+      .nav-icon {
+        opacity: 1;
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+      }
+    }
+
+    &.active {
+      color: white;
+      background: var(--robot-gradient);
+      font-weight: 700;
+      box-shadow: var(--robot-glow), 0 4px 15px rgba(0, 212, 255, 0.25);
+      transform: translateY(-1px);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 3px;
+        background: var(--robot-energy);
+        border-radius: 2px;
+        box-shadow: 0 0 10px var(--robot-energy);
+        animation: energyPulse 2s infinite;
+      }
+
+      .nav-icon {
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+      }
+    }
+  }
+
+  // Header actions
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  // Futuristic Mobile toggle
+  .header-toggler {
+    background: var(--robot-glass);
+    border: 2px solid var(--robot-primary);
+    color: var(--robot-primary);
+    padding: 0.75rem;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--robot-gradient);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    &:hover {
+      color: white;
+      transform: scale(1.1);
+      box-shadow: var(--robot-glow);
+      
+      &::before {
+        left: 0;
+      }
+    }
+  }
+}
+
+// === FUTURISTIC SIDEBAR STYLES (MATCHES HEADER) ===
+// === CUSTOM SIDEBAR HEADER ===
+.sidebar-header-custom {
+  background: linear-gradient(180deg, var(--robot-dark) 0%, #1a1f35 100%);
+  border-bottom: 3px solid transparent;
+  border-image: var(--robot-gradient) 1;
+  backdrop-filter: blur(10px);
+
+  .logo-container {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+
+    .robot-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .brand-text {
+    h5 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    small {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+  }
+
+  // Hover effect
+  &:hover {
+    background: linear-gradient(180deg, #0f152a, #1f2542);
+  }
+}
+.sidebar.sidebar-fixed {
+  background: linear-gradient(180deg, var(--robot-dark) 0%, #1a1f35 100%); // ✅ Keep dark gradient
+  border-right: 3px solid transparent;
+  border-image: var(--robot-gradient) 1;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2); // ✅ Use --robot-primary (0,212,255)
+  overflow: hidden;
+    font-family:'Times New Roman', Times, serif;
+
+  // Sidebar Header
+  .sidebar-header {
+    border-bottom: 2px solid var(--robot-primary);
+    padding: 1.25rem 1rem 0.75rem;
+    background: rgba(0, 212, 255, 0.05); // ✅ Use --robot-primary
+
+    .sidebar-brand {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 5px 15px rgba(0, 212, 255, 0.4));
+      }
+    }
+  }
+
+  // Nav Links
+  .c-sidebar-nav {
+    .nav-item .nav-link {
+      color: #94a3b8 !important;
+      font-weight: 600;
+      border-radius: 8px;
+      margin: 0.25rem 0.75rem;
+      padding: 0.75rem 1rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+
+      // Left energy bar
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 0;
+        background: var(--robot-energy);
+        border-radius: 2px;
+        transition: height 0.3s ease;
+        box-shadow: 0 0 10px var(--robot-energy);
+      }
+
+      &:hover {
+        color: var(--robot-primary) !important;
+        background: var(--robot-glass);
+        transform: translateX(5px);
+        box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2); // ✅ Match theme
+
+        &::before {
+          height: 60%;
+        }
+      }
+
+      &.active {
+        color: white !important;
+        background: var(--robot-gradient);
+        font-weight: 700;
+        box-shadow: var(--robot-glow);
+        transform: translateX(3px);
+
+        &::before {
+          height: 80%;
+          background: var(--robot-energy);
+        }
+      }
+    }
+
+    // Nav Titles
+    .nav-title {
+      color: var(--robot-primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 1.2px;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      margin: 1rem 0.75rem 0.5rem;
+
+      .nav-title-divider {
+        border-color: var(--robot-primary) !important;
+        opacity: 0.3;
+      }
+    }
+  }
+
+  // Sidebar Footer
+  .sidebar-footer {
+    border-top: 2px solid var(--robot-primary);
+    background: rgba(0, 212, 255, 0.05); // ✅ Match header style
+    border-radius: 20px;
+    
+    button {
+      color: #94a3b8;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: var(--robot-primary);
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 8px var(--robot-primary));
+      }
+    }
+  }
+}
+// === HOLOGRAPHIC DROPDOWN MENUS ===
+.dropdown-menu {
+  background: rgba(240, 244, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 2px solid transparent;
+  border-image: var(--robot-gradient) 1;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2), 0 0 50px rgba(0, 212, 255, 0.1);
+}
+
+.dropdown-item {
+  color: #4a5568 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+  margin: 0.25rem 0.5rem;
+  font-weight: 500;
+
+  &:hover {
+    background: var(--robot-glass) !important;
+    transform: translateX(8px);
+    color: var(--robot-primary) !important;
+    box-shadow: 0 3px 15px rgba(0, 212, 255, 0.2);
+  }
+}
+
+// === QUANTUM BUTTONS ===
+.quick-action-btn,
+.btn-primary {
+  background: var(--robot-gradient);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: var(--robot-glow), 0 4px 15px rgba(0, 212, 255, 0.25);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+  }
+
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4), var(--robot-glow);
+
+    &::before {
+      opacity: 1;
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+// === ENERGY BADGES ===
+.badge {
+  &.badge-pill {
+    font-size: 0.65rem;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    background: var(--robot-gradient);
+    color: white;
+    box-shadow: var(--robot-glow);
+    animation: energyPulse 3s infinite;
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@keyframes energyPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: var(--robot-glow);
+  }
+  50% { 
+    transform: scale(1.15); 
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+  }
+}
+
+// === FUTURISTIC PAGES & CARDS ===
+.body {
+  background: linear-gradient(135deg, #f0f4ff 0%, #e6f3ff 100%);
+}
+
+.card {
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1), 0 0 0 1px rgba(0, 212, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--robot-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2), var(--robot-glow);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  .card-header {
+    background: transparent;
+    border-bottom: 2px solid rgba(0, 212, 255, 0.1);
+    font-weight: 700;
+    color: var(--robot-dark);
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .card-body {
+    color: #4a5568;
+  }
+}
+
+// === QUANTUM FOOTER ===
+.app-default-footer {
+  background: linear-gradient(135deg, var(--robot-dark) 0%, #1a1f35 100%);
+  border-top: 3px solid transparent;
+  border-image: var(--robot-gradient) 1;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  box-shadow: 0 -5px 30px rgba(0, 212, 255, 0.1);
+
+  a {
+    color: var(--robot-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    &:hover { 
+      text-decoration: underline;
+      color: var(--robot-secondary);
+      text-shadow: 0 0 10px var(--robot-secondary);
+    }
+  }
+}
+
+// === DARK THEME SUPPORT ===
+[data-coreui-theme="dark"] {
+  .header.header-sticky {
+    background: linear-gradient(135deg, var(--robot-dark) 0%, rgba(16, 20, 35, 0.95) 100%);
+    border-image: linear-gradient(90deg, var(--robot-primary), var(--robot-energy)) 1;
+
+    .header-brand {
+      color: var(--robot-light);
+      &:hover { color: var(--robot-primary); }
+    }
+
+    .header-nav .nav-link {
+      color: #94a3b8;
+
+      &:hover {
+        color: white;
+        box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+      }
+
+      &.active {
+        color: white;
+        background: var(--robot-gradient);
+      }
+    }
+
+    .header-toggler {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: var(--robot-primary);
+      color: var(--robot-primary);
+    }
+  }
+
+  .body { 
+    background: linear-gradient(135deg, var(--robot-dark) 0%, #0f1419 100%);
+  }
+
+  .card {
+    background: rgba(26, 32, 56, 0.9);
+    color: var(--robot-light);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 212, 255, 0.2);
+
+    .card-header { 
+      border-color: rgba(0, 212, 255, 0.2); 
+      color: var(--robot-light);
+    }
+
+    .card-body {
+      color: #94a3b8;
+    }
+  }
+
+  .app-default-footer {
+    background: var(--robot-dark);
+    border-image: var(--robot-gradient) 1;
+  }
+}
+
+// === RESPONSIVE ===
+@media (max-width: 992px) {
+  .header-brand span { display: none; }
+  .header-nav { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  .header-toggler { padding: 0.6rem; }
+  .header-brand svg, .header-brand img { height: 38px; margin-right: 0.5rem; }
+}
+
+// === CUSTOM SCROLLBAR ===
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--robot-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--robot-gradient);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}

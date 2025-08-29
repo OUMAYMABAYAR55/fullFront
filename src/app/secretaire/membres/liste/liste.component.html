@@ -1,0 +1,159 @@
+<!-- src/app/views/membres/liste/liste.component.html -->
+<div class="container-fluid px-4 py-3">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 text-primary fw-semibold">👥 Liste des Membres</h1>
+    <button class="btn btn-primary d-flex align-items-center gap-2" >
+      <svg cIcon name="cilUserPlus" size="sm"></svg>
+      Nouveau Membre
+    </button>
+  </div>
+
+<!-- Advanced Filters -->
+<div class="card mb-4 border-0" 
+     style="background: var(--robot-glass); backdrop-filter: blur(10px); border: 1px solid rgba(0, 212, 255, 0.2);">
+  <div class="card-body">
+    <div class="row g-3">
+      
+      <!-- 🔍 Global Search -->
+      <div class="col-12 col-lg-4">
+        <label class="form-label text-light text-opacity-75" style="font-size: 0.85rem;">Rechercher</label>
+        <div class="input-group">
+          <span class="input-group-text" style="background: rgba(0, 212, 255, 0.1); border: none;">
+            <svg cIcon name="cilMagnifyingGlass" size="sm" style="color: var(--robot-primary);"></svg>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nom, prénom, email..."
+            (input)="onSearch($event)"
+            style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.3); color: white;"
+          />
+        </div>
+      </div>
+
+      <!-- 🧑‍🏫 Formateur -->
+      <div class="col-6 col-lg-2">
+        <label class="form-label text-light text-opacity-75" style="font-size: 0.85rem;">Formateur</label>
+        <select class="form-select"  style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.3); color: white; font-size: 0.875rem;">
+          <option value="">Tous</option>
+          <option value="khalil">Khalil</option>
+          <option value="sarah">Sarah</option>
+          <option value="amine">Amine</option>
+          <option value="nadia">Nadia</option>
+        </select>
+      </div>
+
+      <!-- 🎯 Niveau / Groupe -->
+      <div class="col-6 col-lg-2">
+        <label class="form-label text-light text-opacity-75" style="font-size: 0.85rem;">Niveau</label>
+        <select class="form-select" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.3); color: white; font-size: 0.875rem;">
+          <option value="">Tous</option>
+          <option value="debutant">Débutant</option>
+          <option value="intermediaire">Intermédiaire</option>
+          <option value="avance">Avancé</option>
+        </select>
+      </div>
+
+      <!-- 🟢 Statut -->
+      <div class="col-6 col-lg-2">
+        <label class="form-label text-light text-opacity-75" style="font-size: 0.85rem;">Statut</label>
+        <select class="form-select" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.3); color: white; font-size: 0.875rem;">
+          <option value="">Tous</option>
+          <option value="actif">Actif</option>
+          <option value="inactif">Inactif</option>
+        </select>
+      </div>
+
+      <!-- 🎂 Âge (Min) -->
+      <div class="col-6 col-lg-1">
+        <label class="form-label text-light text-opacity-75" style="font-size: 0.85rem;">Âge Min</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="8"
+          style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.3); color: white; font-size: 0.875rem;"
+        />
+      </div>
+
+      <!-- 🎂 Âge (Max) -->
+      <div class="col-6 col-lg-1">
+        <label class="form-label text-light text-opacity-75" style="font-size: 0.85rem;">Âge Max</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="18"
+          
+          style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.3); color: white; font-size: 0.875rem;"
+        />
+      </div>
+
+    </div>
+
+    <!-- Reset Filters -->
+    
+  </div>
+</div>
+
+  <div class="card shadow-sm border-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Photo</th>
+            <th>Nom</th>
+            <th>Téléphone</th>
+            <th>Groupe</th>
+            <th>Date d'inscription</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (member of filteredMembers(); track member.id) {
+            <tr>
+              <td>
+                <c-avatar
+                  size="md"
+                  shape="rounded"
+                  [src]="member.avatar || './assets/images/avatars/user.png'"
+                  [status]="member.status === 'active' ? 'success' : 'secondary'"
+                ></c-avatar>
+              </td>
+              <td class="fw-medium">{{ member.name }}</td>
+              <td>{{ member.phone }}</td>
+              <td>
+                <span class="badge bg-primary bg-opacity-10 text-primary px-2 py-1">
+                  {{ member.group }}
+                </span>
+              </td>
+              <td>{{ member.joinDate | date:'dd/MM/yyyy' }}</td>
+              <td>
+                <span
+                  class="badge px-3 py-2"
+                  [class.bg-success]="member.status === 'active'"
+                  [class.text-white]="member.status === 'active'"
+                  [class.bg-secondary]="member.status !== 'active'"
+                >
+                  {{ member.status === 'active' ? 'Actif' : 'Inactif' }}
+                </span>
+              </td>
+              <td>
+                <div class="btn-group" role="group">
+                  <button class="btn btn-sm btn-outline-primary" (click)="onView(member)">
+                    <svg cIcon name="cilEye" size="sm"></svg>
+                  </button>
+                  <button class="btn btn-sm btn-outline-success" (click)="onEdit(member)">
+                    <svg cIcon name="cilPencil" size="sm"></svg>
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger" (click)="onDelete(member)">
+                    <svg cIcon name="cilTrash" size="sm"></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

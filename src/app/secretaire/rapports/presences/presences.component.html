@@ -1,0 +1,51 @@
+<!-- src/app/views/rapports/presences/presences.component.html -->
+<div class="container-fluid px-4 py-3">
+  <h1 class="h3 text-info fw-semibold mb-4">📊 Rapport de Présences</h1>
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <select class="form-select">
+        <option>Groupe Débutant</option>
+        <option>Groupe Intermédiaire</option>
+        <option>Groupe Avancé</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <input type="month" class="form-control" value="2025-04" />
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body text-center py-5">
+      <svg cIcon name="cilBarChart" size="xxl" class="text-info opacity-50"></svg>
+      <p class="text-muted mt-3">Graphique de présence mensuelle</p>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Membre</th>
+            <th>Présences</th>
+            <th>Absences</th>
+            <th>Taux</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (member of attendanceData(); track member.id) {
+            <tr>
+              <td>{{ member.name }}</td>
+              <td>{{ member.present }}</td>
+              <td>{{ member.absent }}</td>
+              <td>
+                <span class="badge bg-success">{{ member.rate }}%</span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

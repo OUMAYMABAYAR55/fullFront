@@ -1,0 +1,48 @@
+<div class="container-fluid px-4 py-3">
+  <h1 class="h3 text-success fw-semibold mb-4">💰 Enregistrer un Paiement</h1>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <form>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <label class="form-label">Membre</label>
+            <select class="form-select" required>
+              <option>Youssef Gharbi</option>
+              <option>Fatma Khelifi</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Type de paiement</label>
+            <select class="form-select">
+              <option>Cotisation mensuelle</option>
+              <option>Formation avancée</option>
+              <option>Matériel</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Montant (TND)</label>
+            <input type="number" class="form-control" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Méthode</label>
+            <select class="form-select">
+              <option>Espèces</option>
+              <option>Carte</option>
+              <option>Virement</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Note (optionnel)</label>
+            <textarea class="form-control" rows="2"></textarea>
+          </div>
+          <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-success px-4">
+              Enregistrer le Paiement
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

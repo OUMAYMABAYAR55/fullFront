@@ -1,0 +1,56 @@
+<!-- src/app/views/presences/absences/absences.component.html -->
+<div class="container-fluid px-4 py-3">
+  <h1 class="h3 text-warning fw-semibold mb-4">⚠️ Absences Répétées</h1>
+
+  <div class="alert alert-warning d-flex align-items-center" role="alert">
+    <svg cIcon name="cilExclamationTriangle" class="me-2" size="lg"></svg>
+    <div>
+      <strong>{{ highAbsenceCount }} membres</strong> ont plus de 3 absences sur les 5 dernières séances.
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Membre</th>
+            <th>Groupe</th>
+            <th>Absences (5 dernières)</th>
+            <th>Dernière présence</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (member of highAbsenceMembers(); track member.id) {
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <c-avatar size="md" shape="rounded" [src]="member.avatar" class="me-2"></c-avatar>
+                  <span>{{ member.name }}</span>
+                </div>
+              </td>
+              <td>{{ member.group }}</td>
+              <td>
+                <span class="badge bg-warning">{{ member.absenceCount }}/5</span>
+              </td>
+              <td>{{ member.lastPresence | date:'dd/MM' }}</td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary">Contacter</button>
+                <button class="btn btn-sm btn-outline-warning ms-1">Relancer</button>
+              </td>
+            </tr>
+          }
+          @empty {
+            <tr>
+              <td colspan="5" class="text-center py-5">
+                <svg cIcon name="cilCheck" size="xxl" class="text-success opacity-50"></svg>
+                <p class="text-muted mt-3">Aucune absence répétée détectée</p>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

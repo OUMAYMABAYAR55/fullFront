@@ -1,12 +1,24 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+// src/app/app.config.ts
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { importProvidersFrom } from '@angular/core';
+
+// 🔹 Routes
 import { routes } from './app.routes';
+
+// 🔹 Interceptor
+import { authInterceptor } from './_services/auth.interceptor';
+
+// 🔹 CoreUI (if used)
+import { SidebarModule, DropdownModule } from '@coreui/angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(FormsModule, HttpClientModule) // ✅ Ajout de HttpClientModule ici
+    provideHttpClient(withInterceptors([authInterceptor])),
+    provideAnimations(),
+    importProvidersFrom(SidebarModule, DropdownModule)
   ]
 };

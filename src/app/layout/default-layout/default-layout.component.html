@@ -1,0 +1,67 @@
+<!--sidebar-->
+<c-sidebar
+  #sidebar1="cSidebar"
+  class="d-print-none sidebar sidebar-fixed border-end"
+  colorScheme="dark"
+  id="sidebar1"
+  visible
+>
+<c-sidebar-header class="sidebar-header-custom border-bottom">
+  <!-- Full-width Logo -->
+  <div class="d-flex align-items-center p-3">
+    <!-- Robot Logo -->
+    <div class="logo-container me-3">
+      <img
+        src="assets/logo.jpg"
+        alt="Elite Robotique Logo"
+        class="robot-logo rounded-2"
+      />
+    </div>
+
+    <!-- Brand Text -->
+    <div class="brand-text flex-grow-1">
+      <h5 class="m-0" style="font-family: 'Orbitron', sans-serif; background: linear-gradient(135deg, #00d4ff, #ff6b9d, #744391); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Elite Robotique
+      </h5>
+    </div>
+  </div>
+</c-sidebar-header>
+
+  <!-- Scrollable Navigation -->
+  <ng-scrollbar pointerEventsMethod="scrollbar" visibility="hover">
+    <c-sidebar-nav [navItems]="navItems" dropdownMode="close" compact />
+  </ng-scrollbar>
+
+  <!-- Sidebar Footer (Unfold Button) -->
+  @if (!sidebar1.narrow) {
+    <c-sidebar-footer
+      cSidebarToggle="sidebar1"
+      class="border-top d-none d-lg-flex"
+      toggle="unfoldable"
+      style="cursor: pointer;"
+    >
+      <button cSidebarToggler aria-label="Toggle sidebar fold"></button>
+    </c-sidebar-footer>
+  }
+</c-sidebar>
+
+<!-- Main Wrapper -->
+<div class="wrapper d-flex flex-column min-vh-100">
+  <!-- Header -->
+  <app-default-header
+    [cShadowOnScroll]="'sm'"
+    class="mb-4 d-print-none header header-sticky p-0 shadow-sm"
+    position="sticky"
+    sidebarId="sidebar1"
+  />
+
+  <!-- Page Content -->
+  <div class="body flex-grow-1">
+    <c-container breakpoint="lg" class="h-auto px-4">
+      <router-outlet />
+    </c-container>
+  </div>
+
+  <!-- Footer -->
+  <app-default-footer />
+</div>

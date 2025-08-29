@@ -1,0 +1,101 @@
+<div class="container-fluid px-4 py-3">
+  <h1 class="h3 text-primary fw-semibold mb-4">➕ Inscription Académie Elite Robotique</h1>
+  
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="row g-4">
+          
+          <!-- Section: Child Info -->
+          <h5 class="fw-bold text-secondary mb-3">Informations de l’Enfant</h5>
+          
+          <div class="col-md-6">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-control" required />
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label">Prénom</label>
+            <input type="text" class="form-control" required />
+          </div>
+          
+          <div class="col-md-4">
+            <label class="form-label">Âge</label>
+            <input type="number" class="form-control" required min="3" />
+          </div>
+          
+          <div class="col-md-4">
+            <label class="form-label">Niveau d’étude</label>
+            <input type="text" class="form-control" placeholder="Ex: 5ème, 6ème" required />
+          </div>
+          
+          <div class="col-md-4">
+            <label class="form-label">Ville</label>
+            <input type="text" class="form-control" required />
+          </div>
+          
+          <div class="col-12">
+            <label class="form-label">Adresse</label>
+            <textarea class="form-control" rows="2" required></textarea>
+          </div>
+          
+          <!-- Groupe & Niveau en robotique -->
+          <div class="col-md-6">
+            <label class="form-label">Groupe</label>
+            <select class="form-select" required>
+              <option value="" selected disabled>Choisir...</option>
+              <option>Débutant</option>
+              <option>Intermédiaire</option>
+              <option>Avancé</option>
+            </select>
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label">Niveau en robotique</label>
+            <select class="form-select" required>
+              <option value="" selected disabled>Choisir...</option>
+              <option>Initiation</option>
+              <option>Programmation Arduino</option>
+              <option>Robot autonome</option>
+            </select>
+          </div>
+          
+          <!-- Section: Parent Info -->
+          <h5 class="fw-bold text-secondary mt-4 mb-3">Informations du Parent</h5>
+          
+          <div class="col-md-6">
+            <label class="form-label">Nom et prénom complet</label>
+            <input type="text" class="form-control" required />
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label">Numéro de téléphone</label>
+            <input type="tel" class="form-control" required />
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label">Adresse email</label>
+            <input type="email" class="form-control" required />
+          </div>
+          
+          <!-- Upload Photo -->
+          <div class="col-md-6">
+            <label class="form-label">Photo de l’enfant (optionnel)</label>
+            <input type="file" class="form-control" accept="image/*" />
+          </div>
+          
+          <!-- Submit -->
+          <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-primary px-4">
+              Enregistrer le Membre
+            </button>
+            <button type="button" class="btn btn-outline-secondary ms-2" (click)="onCancel()">
+              Annuler
+            </button>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
